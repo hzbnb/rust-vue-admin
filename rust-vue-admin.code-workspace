@@ -1,0 +1,51 @@
+{
+  "folders": [
+    {
+      "path": "web",
+      "name": "Web"
+    },
+    {
+      "path": "server",
+      "name": "Server"
+    },
+    {
+      "path": ".",
+      "name": "root"
+    }
+  ],
+  "settings": {},
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "go",
+        "request": "launch",
+        "name": "Server",
+        "cwd": "${workspaceFolder:Server}",
+        "console": "integratedTerminal",
+        "program": "${workspaceFolder:Server}/"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceFolder:Web}",
+        "name": "Web",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run-script",
+          "serve"
+        ]
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Both (Web & Server)",
+        "configurations": [
+          "Web",
+          "Server"
+        ],
+        "stopAll": true
+      }
+    ]
+  }
+}
