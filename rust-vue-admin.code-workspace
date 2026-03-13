@@ -1,12 +1,12 @@
 {
   "folders": [
     {
-      "path": "web",
-      "name": "Web"
-    },
-    {
       "path": "server",
       "name": "Server"
+    },
+    {
+      "path": "web",
+      "name": "Web"
     },
     {
       "path": ".",
@@ -18,12 +18,24 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "type": "go",
+        "name": "Debug unit tests in executable 'server'",
+        "type": "lldb",
         "request": "launch",
+        "cargo": {
+          "args": [
+            "test",
+            "--bin=server"
+          ]
+        }
+      },
+      {
         "name": "Server",
+        "type": "lldb",
+        "request": "launch",
         "cwd": "${workspaceFolder:Server}",
-        "console": "integratedTerminal",
-        "program": "${workspaceFolder:Server}/"
+        "program": "${workspaceFolder:Server}/target/debug/server",
+        "preLaunchTask": "cargo build server",
+        "args": []
       },
       {
         "type": "node",
